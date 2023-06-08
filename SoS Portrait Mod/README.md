@@ -7,7 +7,7 @@ This mod adds portraits back into the game.
 
 
 
-The sprite is loaded whenever a conversation is started with a conversation so technically you can change the sprite in game if you replace the photo.
+The sprite is loaded whenever a conversation is started so technically you can change the sprite in game if you replace the photo and initiate the conversation again.
 ## Issues
 - Some sprites aren't perfect but most characters have no issues(dlc characters arent done yet).
 - There are plans to make sure all sprites fit perfectly its just not done yet.
