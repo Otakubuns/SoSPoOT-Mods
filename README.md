@@ -5,7 +5,7 @@ Here are my current mods created for SosPoOT using BepInEx 6.0.0-be.668
 
 ## Installation
 
-Install [BepInEx](https://builds.bepinex.dev/projects/bepinex_be) 6.0.0-be.668
+Install [BepInEx](https://builds.bepinex.dev/projects/bepinex_be) 6.0.0-be.668-IL2CPP
 
 Grab any of the mods .dll in [releases](https://github.com/Otakubuns/SoSPoOT-Mods/releases)
 
