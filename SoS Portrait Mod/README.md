@@ -11,7 +11,7 @@ The sprite is loaded whenever a conversation is started so technically you can c
 ## Issues
 - Some sprites aren't perfect but most characters have no issues(dlc characters arent done yet).
 - There are plans to make sure all sprites fit perfectly its just not done yet.
-- No idea if these work in cutscenes/events
+- ~~No idea if these work in cutscenes/events~~ **Added in 1.0.1 for cutscenes(I assume the code for heart events is the same)**
 - Photos not the size of 350X320 will look stretched(working on fixing that)
 
 ## Future Plans
