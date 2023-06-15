@@ -5,7 +5,6 @@ using BepInEx;
 using BepInEx.Logging;
 using BepInEx.Unity.IL2CPP;
 using BokuMono;
-using BokuMono.Data;
 using HarmonyLib;
 using SoSTestMod;
 using UnityEngine;
@@ -93,35 +92,15 @@ public class Plugin : BasePlugin
                 checkPortrait.active = false;
             }
         }
-
-        [HarmonyPatch(typeof(PresentMasterData), "CheckPreference")]
-        [HarmonyPostfix]
-        public static void PresentPortraitPatch(PresentMasterData.PreferenceLevel __result, uint __0)
-        {
-            // TODO: check for character id to get name
-            // __0 == character id
-            var character = MasterDataManager.Instance.CharacterMaster.GetMasterDataByNameId(__0);
-            var dlcCharacter = MasterDataManager.Instance.DlcCharacterMaster.GetMasterDataByNameTextId(__0);
-
-            if (character != null)
-            {
-                _log.LogInfo("Character ID: " + __0 + " Name: " + character.CharaName);
-            }
-            else if (dlcCharacter != null)
-            {
-                _log.LogInfo("DLC Character ID: " + __0 + " Name: " + dlcCharacter.DlcName);
-            }
-        }
+        
 
         [HarmonyPatch(typeof(UISimpleMessage), "CloseMessage")]
         [HarmonyPrefix]
         public static void CloseMessagePatch(UISimpleMessage __instance)
         {
             var checkPortrait = __instance.transform.parent.Find("CharPortrait")?.gameObject;
-            if (checkPortrait != null)
-            {
-                checkPortrait.active = false;
-            }
+            if (checkPortrait == null) return;
+            checkPortrait.active = false;
         }
 
         private static void CreatePortrait(Component uiMessage, string charName)
@@ -139,7 +118,7 @@ public class Plugin : BasePlugin
             portrait.name = "CharPortrait";
 
             transform.position = new Vector3(2003.3f, -0.1964f, 100);
-            transform.localScale = new Vector3(4.2873f, 4, 108);
+            transform.localScale = new Vector3(4.3f, 4, 108);
 
             transform.SetAsFirstSibling();
 
@@ -152,11 +131,12 @@ public class Plugin : BasePlugin
             // help from https://forum.unity.com/threads/generating-sprites-dynamically-from-png-or-jpeg-files-in-c.343735/
             Texture2D texture2D;
             byte[] fileBytes;
-            var filePath = Path.Combine(SpritePath, pText + extra + ".png");
+            var files = Directory.GetFiles(SpritePath, pText + extra + ".png", SearchOption.AllDirectories);
+            var file = files.Length > 0 ? files[0] : null;
 
-            if (!File.Exists(filePath)) return null;
+            if (!File.Exists(file)) return null;
             // Read all bytes from file and convert to sprite and add to dictionary for easier loading in dialog
-            fileBytes = File.ReadAllBytes(filePath);
+            fileBytes = File.ReadAllBytes(file);
             texture2D = new Texture2D(2, 2);
             return !texture2D.LoadImage(fileBytes)
                 ? null

@@ -60,7 +60,6 @@ public class Plugin : BasePlugin
             __instance.TimeScale = _timeScale.Value;
         }
 
-
         [HarmonyPatch(typeof(GameController), "PostSucceededChangeField")]
         [HarmonyPostfix]
         public static void AreaPatch(GameController __instance, uint __0)
