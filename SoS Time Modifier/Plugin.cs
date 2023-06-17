@@ -4,9 +4,8 @@ using BepInEx.Configuration;
 using BepInEx.Unity.IL2CPP;
 using BokuMono;
 using HarmonyLib;
-using Il2CppSystem.Collections.Generic;
 
-namespace SoS_Time_Changer;
+namespace SoS_Time_Modifier;
 
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
 public class Plugin : BasePlugin

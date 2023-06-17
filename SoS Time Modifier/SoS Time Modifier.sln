@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoS Time Changer", "SoS Time Changer.csproj", "{E82D30C2-C462-4F1F-AC36-A9E74659A491}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoS Time Modifier", "SoS Time Modifier.csproj", "{E82D30C2-C462-4F1F-AC36-A9E74659A491}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,16 +2,16 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <AssemblyName>SoS_Time_Changer</AssemblyName>
-        <Description>My first plugin</Description>
-        <Version>1.0.0</Version>
+        <AssemblyName>SoS_Time_Modifier</AssemblyName>
+        <Description>Plugin to change in game time</Description>
+        <Version>1.0.1</Version>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <LangVersion>latest</LangVersion>
         <RestoreAdditionalProjectSources>
             https://api.nuget.org/v3/index.json;
             https://nuget.bepinex.dev/v3/index.json
         </RestoreAdditionalProjectSources>
-        <RootNamespace>SoS_Time_Changer</RootNamespace>
+        <RootNamespace>SoS_Time_Modifier</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
