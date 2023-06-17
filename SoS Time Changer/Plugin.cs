@@ -13,31 +13,6 @@ public class Plugin : BasePlugin
 {
     private static ConfigEntry<int> _timeScale;
     private static ConfigEntry<bool> _timeInside;
-    private static List<uint> _areas = FillList();
-
-    private static List<uint> FillList()
-    {
-        var list = new List<uint>();
-        // Town
-        list.Add(10102);
-        // Farm
-        list.Add(102);
-        // Earthsprite Village
-        list.Add(20200);
-        // Lava Caves
-        list.Add(20300);
-        // Beanstalk Island
-        list.Add(20400);
-
-        // DLC Areas
-        // Terracotta Oasis
-        list.Add(21212);
-        // Windswept Farms
-        list.Add(21112);
-        // Twilight Isle
-        list.Add(21012);
-        return list;
-    }
 
     public override void Load()
     {
@@ -66,7 +41,7 @@ public class Plugin : BasePlugin
         {
             if (_timeInside.Value) return;
 
-            if (_areas.Contains(__0))
+            if (!FieldManager.Instance.IsIndoorField(__0))
             {
                 if (DateManager.Instance.IsPlay()) return;
                 DateManager.Instance.Play();
@@ -84,10 +59,10 @@ public class Plugin : BasePlugin
         {
             if (_timeInside.Value) return;
 
-            var areaid = GameController.Instance.FM.currentFieldId;
+            var id = GameController.Instance.FM.currentFieldId;
 
 
-            if (_areas.Contains(areaid))
+            if (!FieldManager.Instance.IsIndoorField(id))
             {
                 if (__instance.IsPlay()) return;
                 __instance.Play();
