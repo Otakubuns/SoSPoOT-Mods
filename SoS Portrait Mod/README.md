@@ -19,4 +19,4 @@ The sprite is loaded whenever a conversation is started so technically you can c
 - (Possibly) Try to make the sprites preloaded(had issues with this due to il2cpp compiling)
 
 ## Acknowledgements
-DLC sprites were upscaled using [waifu2x](https://waifu2x.udp.jp/)
+DLC sprites were grabbed from https://ranchstory.miraheze.org and upscaled using [waifu2x](https://waifu2x.udp.jp/)
