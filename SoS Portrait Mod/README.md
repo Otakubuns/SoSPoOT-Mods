@@ -17,3 +17,6 @@ The sprite is loaded whenever a conversation is started so technically you can c
 ## Future Plans
 - (DLC Characters) Add happy/love sprite for liked/loved items
 - (Possibly) Try to make the sprites preloaded(had issues with this due to il2cpp compiling)
+
+## Acknowledgements
+DLC sprites were upscaled using [waifu2x](https://waifu2x.udp.jp/)
