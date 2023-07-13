@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Unity.IL2CPP;
@@ -12,6 +13,7 @@ public class Plugin : BasePlugin
 {
     private static ConfigEntry<int> _timeScale;
     private static ConfigEntry<bool> _timeInside;
+    private static bool _isEvent;
 
     public override void Load()
     {
@@ -52,14 +54,36 @@ public class Plugin : BasePlugin
             }
         }
 
+        [HarmonyPatch(typeof(DateManager), "SetDate")]
+        [HarmonyPostfix]
+        public static void FestivalWorkaround()
+        {
+            // Try incase the game is not loaded yet and festival manager is not initialized
+            try
+            {
+                if (FestivalManager.Instance.openFestivalState == FestivalState.Finish &&
+                    FestivalManager.Instance.IsInSession)
+                {
+                    _isEvent = false;
+                }
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+        }
+
         [HarmonyPatch(typeof(DateManager), "Play")]
         [HarmonyPostfix]
         public static void TimeInsidePatch(DateManager __instance)
         {
             if (_timeInside.Value) return;
-
+            
+            // Festival workaround
+            if (GameController.Instance.isEvent) _isEvent = true;
+            if (_isEvent) return;
+            
             var id = GameController.Instance.FM.currentFieldId;
-
 
             if (!FieldManager.Instance.IsIndoorField(id))
             {
@@ -68,7 +92,7 @@ public class Plugin : BasePlugin
             }
             else
             {
-                if (!__instance.IsPlay()) return; 
+                if (!__instance.IsPlay()) return;
                 __instance.Pause();
             }
         }
