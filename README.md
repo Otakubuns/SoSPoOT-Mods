@@ -7,7 +7,7 @@ Here are my current mods created for SosPoOT using BepInEx 6.0.0-be.668
 
 Install [BepInEx](https://builds.bepinex.dev/projects/bepinex_be) 6.0.0-be.668-IL2CPP(#668)
 
-Grab any of the mods .dll in [releases](https://github.com/Otakubuns/SoSPoOT-Mods/releases)
+Grab Craft Limit and Time Changer on [NexusMods](https://github.com/Otakubuns/SoSPoOT-Mods/releases](https://www.nexusmods.com/storyofseasonspioneersofolivetown/users/30284850?tab=user+files)
 
 ## Mods
 Check each folder for more information about each mod
